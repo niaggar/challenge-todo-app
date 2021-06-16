@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+:root {
+    --border-rad: 5pt;
+    --text-selected: hsl(220, 98%, 61%);
+    /* Dark mode */
+    --dark-bg-img: url('./images/bg-desktop-dark.jpg');
+    --dark-bg-color: hsl(235, 21%, 11%);
+    --dark-todo-bg: hsl(235, 24%, 19%);
+    --dark-text-normal: hsl(234, 39%, 85%);
+    --dark-text-secundary: hsl(234, 11%, 52%);
+    --dark-line-separator: hsl(237, 14%, 26%);    
+    /* --dark-text-active: hsl(236, 33%, 92%);
+    --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%); */
+    
+    /* Light mode */
+    --light-bg-img: url('./images/bg-desktop-light.jpg');
+    --light-todo-bg: hsl(0, 0%, 98%);
+    --light-bg-color: hsl(236, 33%, 92%);
+    --light-line-separator: hsl(233, 11%, 84%);
+    --light-text-secundary: hsl(236, 9%, 61%);
+    --light-text-normal: hsl(235, 19%, 35%);
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    background-image: var(--bg-img);
+    background-repeat: no-repeat;
+    background-position: top left;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Themes settings */
+
+body.dark {
+    --bg-color: var(--dark-bg-color);
+    --bg-img: var(--dark-bg-img);
+    --todo-bg: var(--dark-todo-bg);
+    --text-normal: var(--dark-text-normal);
+    --text-secundary: var(--dark-text-secundary);
+    --line-separator: var(--dark-line-separator);
+}
+
+body.light {
+    --bg-color: var(--light-bg-color);
+    --bg-img: var(--light-bg-img);
+    --todo-bg: var(--light-todo-bg);
+    --text-normal: var(--light-text-normal);
+    --text-secundary: var(--light-text-secundary);
+    --line-separator: var(--light-line-separator);
+}
+
+/* TODO CONTENT */
+
+/* Header */
+
+#todo-app {
+    width: 100%;
+    max-width: 560px;
+    margin-top: 70px;
+}
+
+#todo-app header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+#todo-app header h1{
+    font-size: 2.2rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    margin-bottom: -10px;
+    font-weight: 700;
+}
+
+#todo-app header img {
+    width: 1.5rem;
+    cursor: pointer;
+}
+
+/* Todos */
+
+#todos {
+    width: 100%;
+    height: auto;
+}
+
+.drop-shadow {
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.418);
+}
+
+/* TODO */
+
+/* Todo container */
+
+.todo {
+    width: 100%;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    border-bottom: 1px solid var(--line-separator);
+    color: var(--text-normal);
+    cursor: pointer;
+}
+
+.todo.completed p {
+    text-decoration: line-through;
+    color: var(--text-secundary);
+}
+
+/* Todo text */
+
+.todo__text {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-right: 15px;
+    margin-bottom: -5px;
+}
+
+.todo__text p {
+    margin-bottom: -5px;
+}
+
+.todo__text a {
+    opacity: 0;
+}
+
+.todo__text:hover a {
+    opacity: 1;
+}
+
+.todos__check input:checked .todo__text * {
+    color: red;
+}
+
+/* Todo checkbox */
+
+.todos__check {
+    --width: 20px;
+    --height: 20px;
+    width: var(--width);
+    height: var(--height);
+    position: relative;
+    margin-right: 15px;
+    margin-left: 10px;
+}
+
+.todos__check input {
+    opacity: 0;
+    width: var(--width);
+    height: var(--height);
+    z-index: 99;
+    cursor: pointer;
+    position: relative
+}
+
+.todos__show {
+    width: var(--width);
+    height: var(--height);
+    top: 0;
+    left: 0;
+    padding: 1px;
+    z-index: 0;
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    background: var(--text-secundary);
+}
+
+.todos__show-check {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--todo-bg);
+}
+
+.todos__check input:checked + .todos__show,
+.todos__check input:hover + .todos__show {
+    background: linear-gradient(318deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+.todos__check input:checked + .todos__show > .todos__show-check--checked {
+    display: none;
+}
+
+.todos__check input:checked + .todos__show {
+    background-image: 
+        url('./images/icon-check.svg'),
+        linear-gradient(318deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.todos__add-text label,
+.todos__check label {
+    display: none;
+}
+
+/* Todos Add */
+
+.todos__add {
+    width: 100%;
+    height: 65px;
+    padding: 5px;
+    background-color: var(--todo-bg);
+    border-radius: var(--border-rad);
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+/* Add todo text */
+
+.todos__add-text {
+    width: 100%;
+    margin-right: 10px;
+    margin-bottom: -5px;
+}
+
+.todos__add-text input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text-normal);
+}
+
+.todos__add-text input::placeholder {
+    color: var(--text-secundary);
+}
+
+/* Todos container */
+
+.todos__container {
+    width: 100%;
+    background-color: var(--todo-bg);
+    border-radius: var(--border-rad);
+    overflow: hidden;
+}
+
+.todos__options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.todos__options * {
+    font-size: 0.8rem;
+    color: var(--text-secundary);
+    font-weight: 400;
+}
+
+.todos__options a {
+    cursor: pointer;
+}
+
+.todos__options a:hover {
+    color: var(--text-normal);
+}
+
+.todos__options-clasify a {
+    margin: 0 10px;
+}
+
+.todos__options .active {
+    color: var(--text-selected)
+}

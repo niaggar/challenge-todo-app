@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./src/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./src/style.css">
+  <title>Frontend Mentor | Todo app</title>
+</head>
+<body class="dark">
+
+  <section id="todo-app">
+
+    <header>
+      <h1>Todo</h1>
+      <img id="change-theme" src="./src/images/icon-sun.svg" alt="Sun icon">
+    </header>
+
+    <article id="todos">
+
+      <article class="todos__add drop-shadow">
+        <div class="todos__check">
+          <label for="todo-check">Todo check</label>
+          <input id="todo-check" type="checkbox" disabled>
+          <span class="todos__show">
+            <span class="todos__show-check todos__show-check--checked"></span>
+          </span>
+        </div>
+
+        <div class="todos__add-text">
+          <label for="todo-name">Todo name</label>
+          <input id="todo-name" type="text" placeholder="Create a new todo..." required>
+        </div>
+      </article>
+
+      <div class="todos__container drop-shadow">
+
+        <article class="todo completed">
+          <div class="todos__check">
+            <label for="todo-check">Todo check</label>
+            <input id="todo-check" type="checkbox">
+            <span class="todos__show">
+              <span class="todos__show-check todos__show-check--checked"></span>
+            </span>
+          </div>
+          <div class="todo__text">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <a><img src="./src/images/icon-cross.svg" alt="cross icon"></a>
+          </div>
+        </article>
+
+        <div class="todos__options">
+          <p><span>0</span> items left</p>
+          <div class="todos__options-clasify">
+            <a class="active">All</a>
+            <a class="">Active</a>
+            <a class="">Completed</a>
+          </div>
+          <a>Clear Completed</a>
+        </div>
+
+      </div>
+
+    </article>
+
+  </section>
+
+  <script type="module" src="./src/app.js"></script>
+  <script type="module" src="./src/change-theme.js"></script>
+</body>
+</html>
