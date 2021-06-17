@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="./src/style.css">
   <title>Frontend Mentor | Todo app</title>
 </head>
-<body class="dark">
+<body class="light">
 
   <section id="todo-app">
 
     <header>
       <h1>Todo</h1>
-      <img id="change-theme" src="./src/images/icon-sun.svg" alt="Sun icon">
+      <img id="change-theme" src="./src/images/icon-moon.svg" alt="Sun icon">
     </header>
 
     <article id="todos">
@@ -26,7 +26,6 @@
             <span class="todos__show-check todos__show-check--checked"></span>
           </span>
         </div>
-
         <div class="todos__add-text">
           <label for="todo-name">Todo name</label>
           <input id="todo-name" type="text" placeholder="Create a new todo..." required>
@@ -34,21 +33,8 @@
       </article>
 
       <div class="todos__container drop-shadow">
-
-        <article class="todo completed">
-          <div class="todos__check">
-            <label for="todo-check">Todo check</label>
-            <input id="todo-check" type="checkbox">
-            <span class="todos__show">
-              <span class="todos__show-check todos__show-check--checked"></span>
-            </span>
-          </div>
-          <div class="todo__text">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <a><img src="./src/images/icon-cross.svg" alt="cross icon"></a>
-          </div>
-        </article>
-
+        <div id="todo-container" style="width: 100%;">
+        </div>
         <div class="todos__options">
           <p><span>0</span> items left</p>
           <div class="todos__options-clasify">
@@ -56,14 +42,29 @@
             <a class="">Active</a>
             <a class="">Completed</a>
           </div>
-          <a>Clear Completed</a>
+          <a id="clear-completed">Clear Completed</a>
         </div>
-
       </div>
 
     </article>
 
   </section>
+
+  <template id="todo-template">
+    <article class="todo">
+      <div class="todos__check">
+        <label for="todo-check">Todo check</label>
+        <input id="todo-check" type="checkbox">
+        <span class="todos__show">
+          <span class="todos__show-check todos__show-check--checked"></span>
+        </span>
+      </div>
+      <div class="todo__text">
+        <p>This is a todo</p>
+        <a id="todo-delete"><img src="./src/images/icon-cross.svg" alt="cross icon"></a>
+      </div>
+    </article>
+  </template>
 
   <script type="module" src="./src/app.js"></script>
   <script type="module" src="./src/change-theme.js"></script>

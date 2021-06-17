@@ -42,6 +42,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    transition: all 1s;
 }
 
 /* Themes settings */
