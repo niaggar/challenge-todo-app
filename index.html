@@ -36,11 +36,11 @@
         <div id="todo-container" style="width: 100%;">
         </div>
         <div class="todos__options">
-          <p><span>0</span> items left</p>
-          <div class="todos__options-clasify">
-            <a class="active">All</a>
-            <a class="">Active</a>
-            <a class="">Completed</a>
+          <p><span id="todos-count">0</span> items left</p>
+          <div id="filters" class="todos__options-clasify">
+            <a id="filt-all" data-filter="all" class="active">All</a>
+            <a id="filt-active" data-filter="active" class="">Active</a>
+            <a id="filt-completed" data-filter="completed" class="">Completed</a>
           </div>
           <a id="clear-completed">Clear Completed</a>
         </div>
@@ -61,12 +61,12 @@
       </div>
       <div class="todo__text">
         <p>This is a todo</p>
-        <a id="todo-delete"><img src="./src/images/icon-cross.svg" alt="cross icon"></a>
       </div>
+      <a id="todo-delete"><img src="./src/images/icon-cross.svg" alt="cross icon"></a>
     </article>
   </template>
 
   <script type="module" src="./src/app.js"></script>
-  <script type="module" src="./src/change-theme.js"></script>
+  <script type="module" src="./src/javascript/change-theme.js"></script>
 </body>
 </html>
