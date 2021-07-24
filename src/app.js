@@ -8,8 +8,6 @@ const newTodoName = document.querySelector('#todo-name');
 const deleteCompleted = document.querySelector('#clear-completed');
 const btnsContainerFilter = document.querySelector('#filters');
 
-window.sessionStorage.setItem('filter', 'all');
-
 
 
 // Funcion para crear y renderizar los todos
@@ -52,9 +50,6 @@ function createHTMLTodo({ Id, Text, State }) {
 
   // Agrega el todo a la web y a la lista temporal de todos los todos
   todoContainer.appendChild(newTodo);
-
-  const FILTER = window.sessionStorage.getItem('filter');
-  renderFilter(FILTER);
 }
 
 
@@ -62,8 +57,6 @@ function createHTMLTodo({ Id, Text, State }) {
 const createTodo = (newTodo) => {
   const TODOS = JSON.parse(localStorage.getItem('todos'));
   TODOS.push(newTodo);
-
-  // Almacena todos los todos
   localStorage.setItem('todos', JSON.stringify(TODOS));
 }
 
@@ -71,15 +64,9 @@ const createTodo = (newTodo) => {
 newTodoName.addEventListener('keyup', (e) => {
   if (e.key !== 'Enter' || newTodoName.value.length < 3) return;
 
-  const btnsFilter = {
-    All: document.querySelector('#filt-all'),
-    Active: document.querySelector('#filt-active'),
-    Completed: document.querySelector('#filt-completed'),
-  }
-
-  for (let btn in btnsFilter) btnsFilter[btn].classList.remove('active');
+  document.querySelector('#filters > a.active').classList.remove('active');
   window.sessionStorage.setItem('filter', 'all');
-  btnsFilter.All.classList.add('active');
+  document.querySelector('#filt-all').classList.add('active');
 
   const newTodo = {
     State: false,
@@ -89,8 +76,10 @@ newTodoName.addEventListener('keyup', (e) => {
 
   newTodoName.value = '';
 
-  createTodo(newTodo)
+  createTodo(newTodo);
   createHTMLTodo(newTodo);
+
+  renderFilter('all');
 });
 
 deleteCompleted.addEventListener('click', () => {
@@ -109,6 +98,8 @@ deleteCompleted.addEventListener('click', () => {
 
 // Funcion para obtener los todos del localstorage
 (() => {
+  window.sessionStorage.setItem('filter', 'all');
+
   let todos = localStorage.getItem('todos');
   if (!todos) {
     localStorage.setItem('todos', JSON.stringify([]));
@@ -118,6 +109,7 @@ deleteCompleted.addEventListener('click', () => {
   // Si existen los todos renderizarlos
   todos = JSON.parse(todos);
   todos.forEach((todo) => createHTMLTodo(todo));
+  renderFilter('all');
 })();
 
 

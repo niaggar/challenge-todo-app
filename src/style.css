@@ -285,3 +285,10 @@ body.light {
 .todos__options .active {
     color: var(--text-selected)
 }
+
+
+@media (max-width: 600px) {
+    html {
+        font-size: 13px;
+    }
+}

@@ -3,7 +3,7 @@ import { renderFilter } from './filter-functions.js'
 
 export const eventChangeCheck = (element, Id, text) => {
   const TODOS = JSON.parse(localStorage.getItem('todos'));
-  const state = element.checked
+  const state = element.checked;
   
   if ((state && !text) || (!state && text)) {
     document.querySelector(`#todo-${Id}`).classList.add('completed');

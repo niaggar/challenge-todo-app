@@ -9,7 +9,7 @@ export const eventFilterContainer = (e) => {
   const FILTER = e.target.dataset.filter;
   window.sessionStorage.setItem('filter', FILTER);
   
-  for (let btn in btnsFilter) btnsFilter[btn].classList.remove('active');
+  document.querySelector('#filters > a.active').classList.remove('active');
   renderFilter(FILTER)
 }
 
